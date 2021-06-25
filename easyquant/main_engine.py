@@ -37,16 +37,19 @@ class MainEngine:
         self.broker = broker
 
         # 登录账户
-        if (broker is not None) and (need_data is not None):
-            self.user = easytrader.use(broker)
-            need_data_file = pathlib.Path(need_data)
-            if need_data_file.exists():
-                self.user.prepare(need_data)
-            else:
-                log_handler.warn("券商账号信息文件 %s 不存在, easytrader 将不可用" % need_data)
-        else:
-            self.user = None
-            self.log.info('选择了无交易模式')
+#        if (broker is not None) and (need_data is not None):
+#            self.user = easytrader.use(broker)
+#            need_data_file = pathlib.Path(need_data)
+#            if need_data_file.exists():
+#                self.user.prepare(need_data)
+#            else:
+#                log_handler.warn("券商账号信息文件 %s 不存在, easytrader 将不可用" % need_data)
+#        else:
+#            self.user = None
+#            self.log.info('选择了无交易模式')
+
+        self.user = None
+        self.log.info('选择了无交易模式')
 
         self.event_engine = EventEngine()
         self.clock_engine = ClockEngine(self.event_engine, tzinfo)
